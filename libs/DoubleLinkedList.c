@@ -1,6 +1,6 @@
 #include "DoubleLinkedList.h"
 
-DoubleLinkedList* CreateDoubleLinkedList() {
+EXPORT DoubleLinkedList* CreateDoubleLinkedList() {
     node* head = malloc(sizeof(node));
     node* tail = malloc(sizeof(node));
 
@@ -19,7 +19,7 @@ DoubleLinkedList* CreateDoubleLinkedList() {
     return List;
 }
 
-DoubleLinkedList* Slice(DoubleLinkedList* List, int index) {
+EXPORT DoubleLinkedList* Slice(DoubleLinkedList* List, int index) {
     node* currentOfFirst = List->head->next;
     int i;
     for(i = 0; i < index - 1; i++) {
@@ -48,7 +48,7 @@ DoubleLinkedList* Slice(DoubleLinkedList* List, int index) {
     return SlicedList;
 }
 
-int Push(DoubleLinkedList* List, int value) {
+EXPORT int Push(DoubleLinkedList* List, int value) {
     node* temp = malloc(sizeof(node));
     temp->value = value;
     temp->next = List->tail;
@@ -60,7 +60,7 @@ int Push(DoubleLinkedList* List, int value) {
     return value;
 }
 
-int Pop(DoubleLinkedList* List) {
+EXPORT int Pop(DoubleLinkedList* List) {
     int returnedValue = List->head->value;
 
     if(List->head->next->next == NULL) {
@@ -81,7 +81,7 @@ int Pop(DoubleLinkedList* List) {
     return returnedValue;
 }
 
-int Unshift(DoubleLinkedList* List, int value) {
+EXPORT int Unshift(DoubleLinkedList* List, int value) {
     node* temp = malloc(sizeof(node));
     temp->value = value;
     temp->next = List->head->next;
@@ -93,7 +93,7 @@ int Unshift(DoubleLinkedList* List, int value) {
     return value;
 }
 
-int Shift(DoubleLinkedList* List) {
+EXPORT int Shift(DoubleLinkedList* List) {
     int returnedValue = List->head->value;
 
     if(List->head->next->next == NULL) {
@@ -114,7 +114,7 @@ int Shift(DoubleLinkedList* List) {
     return returnedValue;
 }
 
-int IndexUnshift(DoubleLinkedList* List, int index, int value) {
+EXPORT int IndexUnshift(DoubleLinkedList* List, int index, int value) {
     node* current = List->head;
     int i;
 
@@ -137,7 +137,7 @@ int IndexUnshift(DoubleLinkedList* List, int index, int value) {
     return value;
 }
 
-int IndexShift(DoubleLinkedList* List, int index) {
+EXPORT int IndexShift(DoubleLinkedList* List, int index) {
     node* current = List->head->next;
     int i; 
     for(i = 0; i < index; i++) {
@@ -156,7 +156,7 @@ int IndexShift(DoubleLinkedList* List, int index) {
     return returnedValue;
 }
 
-void Foreach(DoubleLinkedList* List, void(*callback)(node*, int)) {
+EXPORT void Foreach(DoubleLinkedList* List, void(*callback)(node*, int)) {
     node* current = List->head->next;
     int i;
     for(i = 0; current->next != NULL; i++) {
@@ -164,22 +164,3 @@ void Foreach(DoubleLinkedList* List, void(*callback)(node*, int)) {
         current = current->next;
     }
 }
-
-void PrintList(DoubleLinkedList* List) {
-    node* temp = List->head->next;
-    while(temp->next->next != NULL) {
-        printf("%d, ", temp->value);
-        temp = temp->next;
-    }
-    printf("%d", temp->value);
-}
-
-void PrintInReverseOrder(DoubleLinkedList* List) {
-    node* temp = List->tail->prev;
-    while(temp->prev->prev != NULL) {
-        printf("%d, ", temp->value);
-        temp = temp->prev;
-    }
-    printf("%d", temp->value);
-}
-
