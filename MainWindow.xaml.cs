@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using DoubleLinkedListController;
 
 namespace ProjektPP2
 {
@@ -21,8 +22,18 @@ namespace ProjektPP2
     public partial class MainWindow : Window
     {
         public MainWindow()
-        {
+        {   
+            unsafe {
+                var List = DLLController.CreateDoubleLinkedList();
+                DLLController.Push(List, 100);
+                test2 = List->head->next->value;
+            }
             InitializeComponent();
+        }
+
+        int test2;
+        private void Test(object sender, RoutedEventArgs args) {
+            MessageBox.Show("" + test2);            
         }
     }
 }
