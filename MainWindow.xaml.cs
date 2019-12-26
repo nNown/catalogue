@@ -21,19 +21,26 @@ namespace ProjektPP2
     /// </summary>
     public partial class MainWindow : Window
     {
+        DLLController.List initializedData;
         public MainWindow()
         {   
-            unsafe {
-                var List = DLLController.CreateDoubleLinkedList();
-                DLLController.Push(List, 100);
-                test2 = List->head->next->value;
-            }
+            initializedData = GetData();
             InitializeComponent();
         }
 
-        int test2;
         private void Test(object sender, RoutedEventArgs args) {
-            MessageBox.Show("" + test2);            
+            unsafe {
+                MessageBox.Show("" + initializedData.head->next->value); 
+            }           
+        }
+
+        private DLLController.List GetData() {
+            unsafe {
+                var Data = DLLController.CreateDoubleLinkedList();
+                DLLController.Push(Data, 100);
+
+                return *Data;
+            }
         }
     }
 }
