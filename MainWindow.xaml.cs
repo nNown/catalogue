@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using DoubleLinkedListController;
+using System.Runtime.InteropServices;
 
 namespace ProjektPP2
 {
@@ -30,16 +31,29 @@ namespace ProjektPP2
 
         private void Test(object sender, RoutedEventArgs args) {
             unsafe {
-                MessageBox.Show("" + initializedData.head->next->value); 
+                MessageBox.Show(Marshal.PtrToStringAnsi((IntPtr)initializedData.head->next->data.name)); 
             }           
         }
-
+    
         private DLLController.List GetData() {
             unsafe {
-                var Data = DLLController.CreateDoubleLinkedList();
-                DLLController.Push(Data, 100);
+                var List = DLLController.CreateDoubleLinkedList();
+                var ParsedData = new DLLController.Data();
+                
+                System.Text.Encoding enc = System.Text.Encoding.ASCII;
+                byte[] name = enc.GetBytes("Random name");
 
-                return *Data;
+                int size = Marshal.SizeOf(name[0] * name.Length);
+
+                IntPtr ptr = Marshal.AllocHGlobal(size);
+                
+                Marshal.Copy(name, 0, ptr, name.Length);
+
+                ParsedData.name = (byte*) ptr.ToPointer();
+                ParsedData.pathToImage = (byte*) ptr.ToPointer();
+                
+                DLLController.Push(List, ParsedData);
+                return *List;
             }
         }
     }
