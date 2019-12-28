@@ -4,13 +4,11 @@ EXPORT DoubleLinkedList* CreateDoubleLinkedList() {
     node* head = malloc(sizeof(node));
     node* tail = malloc(sizeof(node));
 
-    head->data.name = "null";
-    head->data.pathToImage = "null";
+    head->data = NULL;
     head->next = tail;
     head->prev = NULL;
 
-    tail->data.name = "null";
-    tail->data.pathToImage = "null";
+    tail->data = NULL;
     tail->next = NULL;
     tail->prev = head;
 
@@ -50,7 +48,7 @@ EXPORT DoubleLinkedList* Slice(DoubleLinkedList* List, int index) {
     return SlicedList;
 }
 
-EXPORT int Push(DoubleLinkedList* List, Data data) {
+EXPORT void Push(DoubleLinkedList* List, void* data) {
     node* temp = malloc(sizeof(node));
     temp->data = data;
     temp->next = List->tail;
@@ -59,15 +57,15 @@ EXPORT int Push(DoubleLinkedList* List, Data data) {
     List->tail->prev->next = temp;
     List->tail->prev = temp;
 
-    return 0;
+    return;
 }
 
-EXPORT int Pop(DoubleLinkedList* List) {
+EXPORT void Pop(DoubleLinkedList* List) {
     if(List->head->next->next == NULL) {
         List->head->next = NULL;
         List->tail->prev = NULL;
         free(List);
-        return -1;
+        return;
     }
 
     node* temp = List->tail->prev->prev;
@@ -77,10 +75,10 @@ EXPORT int Pop(DoubleLinkedList* List) {
     temp->next = List->tail;
     List->tail->prev = temp;
 
-    return 0;
+    return;
 }
 
-EXPORT int Unshift(DoubleLinkedList* List, Data data) {
+EXPORT void Unshift(DoubleLinkedList* List, void* data) {
     node* temp = malloc(sizeof(node));
     temp->data = data;
     temp->next = List->head->next;
@@ -89,15 +87,15 @@ EXPORT int Unshift(DoubleLinkedList* List, Data data) {
     List->head->next->prev = temp;
     List->head->next = temp;
 
-    return 0;
+    return;
 }
 
-EXPORT int Shift(DoubleLinkedList* List) {
+EXPORT void Shift(DoubleLinkedList* List) {
     if(List->head->next->next == NULL) {
         List->head->next = NULL;
         List->tail->prev = NULL;
         free(List);
-        return -1;
+        return;
     }
 
     node* temp = List->head->next->next;
@@ -107,16 +105,16 @@ EXPORT int Shift(DoubleLinkedList* List) {
     List->head->next = temp;
     temp->prev = List->head;
 
-    return 0;
+    return;
 }
 
-EXPORT int IndexUnshift(DoubleLinkedList* List, int index, Data data) {
+EXPORT void IndexUnshift(DoubleLinkedList* List, int index, void* data) {
     node* current = List->head;
     int i;
 
     for(i = 0; i < index; i++) {
         if(current->next == NULL && i < index) {
-            return -1;
+            return;
         }
         current = current->next;
     }
@@ -130,26 +128,24 @@ EXPORT int IndexUnshift(DoubleLinkedList* List, int index, Data data) {
     current->next->prev = temp;
     current->next = temp;
 
-    return 0;
+    return;
 }
 
-EXPORT int IndexShift(DoubleLinkedList* List, int index) {
+EXPORT void IndexShift(DoubleLinkedList* List, int index) {
     node* current = List->head->next;
     int i; 
     for(i = 0; i < index; i++) {
         if(current->next->next == NULL && i < index) {
-            return -1;
+            return;
         }
         current = current->next;
     }
 
     current->prev->next = current->next;
     current->next->prev = current->prev;
-
-    Data returnedValue = current->data;
     free(current);
 
-    return 0;
+    return;
 }
 
 EXPORT void Foreach(DoubleLinkedList* List, void(*callback)(node*, int)) {

@@ -12,8 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using DoubleLinkedListController;
 using System.Runtime.InteropServices;
+using Controllers.DoubleLinkedList;
+using Models.AnimalModel;
 
 namespace ProjektPP2
 {
@@ -22,39 +23,28 @@ namespace ProjektPP2
     /// </summary>
     public partial class MainWindow : Window
     {
-        DLLController.List initializedData;
+        unsafe DLLController.List* initializedData;
         public MainWindow()
         {   
-            initializedData = GetData();
+            unsafe { initializedData = GetData(); }
+
             InitializeComponent();
         }
 
-        private void Test(object sender, RoutedEventArgs args) {
-            unsafe {
-                MessageBox.Show(Marshal.PtrToStringAnsi((IntPtr)initializedData.head->next->data.name)); 
-            }           
+        private unsafe void Test(object sender, RoutedEventArgs args) {
+            MessageBox.Show(Marshal.PtrToStructure<AnimalModel>((IntPtr) initializedData->head->next->next->data).name);
         }
-    
-        private DLLController.List GetData() {
-            unsafe {
-                var List = DLLController.CreateDoubleLinkedList();
-                var ParsedData = new DLLController.Data();
-                
-                System.Text.Encoding enc = System.Text.Encoding.ASCII;
-                byte[] name = enc.GetBytes("Random name");
 
-                int size = Marshal.SizeOf(name[0] * name.Length);
+        private unsafe DLLController.List* GetData() {
+            var List = DLLController.CreateDoubleLinkedList();
+            var ParsedData = new AnimalData().GetJsonData("./data/animals.json");
+            for(int i = 0; i < ParsedData.Count; i++) {
+                IntPtr ParsedObjectPtr = Marshal.AllocHGlobal(Marshal.SizeOf(ParsedData[i]));
+                Marshal.StructureToPtr(ParsedData[i], ParsedObjectPtr, false);
 
-                IntPtr ptr = Marshal.AllocHGlobal(size);
-                
-                Marshal.Copy(name, 0, ptr, name.Length);
-
-                ParsedData.name = (byte*) ptr.ToPointer();
-                ParsedData.pathToImage = (byte*) ptr.ToPointer();
-                
-                DLLController.Push(List, ParsedData);
-                return *List;
+                DLLController.Push(List, ParsedObjectPtr.ToPointer());
             }
+            return List;
         }
     }
 }
