@@ -12,8 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using DoubleLinkedListController;
 using System.Runtime.InteropServices;
+using Controllers.DoubleLinkedList;
+using Models.AnimalModel;
 
 namespace ProjektPP2
 {
@@ -22,39 +23,41 @@ namespace ProjektPP2
     /// </summary>
     public partial class MainWindow : Window
     {
-        DLLController.List initializedData;
+        unsafe DLLController.List* initializedData;
         public MainWindow()
         {   
-            initializedData = GetData();
+            unsafe { initializedData = GetData(); }
+
             InitializeComponent();
         }
 
-        private void Test(object sender, RoutedEventArgs args) {
-            unsafe {
-                MessageBox.Show(Marshal.PtrToStringAnsi((IntPtr)initializedData.head->next->data.name)); 
-            }           
+        private unsafe void Test(object sender, RoutedEventArgs args) {
+            MessageBox.Show(Marshal.PtrToStringAnsi((IntPtr)initializedData->head->next->data.name));
         }
-    
-        private DLLController.List GetData() {
-            unsafe {
-                var List = DLLController.CreateDoubleLinkedList();
-                var ParsedData = new DLLController.Data();
-                
-                System.Text.Encoding enc = System.Text.Encoding.ASCII;
-                byte[] name = enc.GetBytes("Random name");
 
-                int size = Marshal.SizeOf(name[0] * name.Length);
-
-                IntPtr ptr = Marshal.AllocHGlobal(size);
+        private unsafe DLLController.List* GetData() {
+            var List = DLLController.CreateDoubleLinkedList();
+            var ParsedData = new DLLController.Data();
                 
-                Marshal.Copy(name, 0, ptr, name.Length);
-
-                ParsedData.name = (byte*) ptr.ToPointer();
-                ParsedData.pathToImage = (byte*) ptr.ToPointer();
-                
+            var ModelData = new AnimalData().GetJsonData("./data/animals.json");
+            for(int i = 0; i < ModelData.Count; i++) {
+                ParsedData.name = ConvertStringToBytePointer(ModelData[i].name);
+                ParsedData.pathToImage = ConvertStringToBytePointer(ModelData[i].pathToImage);
                 DLLController.Push(List, ParsedData);
-                return *List;
             }
+
+            return List;
+        }
+
+        private unsafe byte* ConvertStringToBytePointer(string s) {
+            byte[] stringAsByteArr = Encoding.ASCII.GetBytes(s);
+
+            int size = Marshal.SizeOf(stringAsByteArr[0] * stringAsByteArr.Length);
+
+            IntPtr ptr = Marshal.AllocHGlobal(size);
+            Marshal.Copy(stringAsByteArr, 0, ptr, stringAsByteArr.Length);
+
+            return (byte*) ptr.ToPointer();
         }
     }
 }

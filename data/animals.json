@@ -1,0 +1,10 @@
+[
+    {
+        "name": "Brown Squirrel",
+        "pathToImage": "./brown-squirrel.jpg"
+    },
+    {
+        "name": "Duckling",
+        "pathToImage": "./duckling.jpg"
+    }
+]

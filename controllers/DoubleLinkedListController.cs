@@ -1,6 +1,6 @@
 using System.Runtime.InteropServices;
 
-namespace DoubleLinkedListController {
+namespace Controllers.DoubleLinkedList {
     public class DLLController {
         [StructLayout(LayoutKind.Sequential)]
         public unsafe struct Data {
