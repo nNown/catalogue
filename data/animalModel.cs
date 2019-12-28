@@ -9,7 +9,7 @@ namespace Models.AnimalModel {
         }
     }
 
-    public class AnimalModel {
+    public struct AnimalModel {
         public string name { get; set; }
         public string pathToImage { get; set; }
     }

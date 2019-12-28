@@ -32,32 +32,19 @@ namespace ProjektPP2
         }
 
         private unsafe void Test(object sender, RoutedEventArgs args) {
-            MessageBox.Show(Marshal.PtrToStringAnsi((IntPtr)initializedData->head->next->data.name));
+            MessageBox.Show(Marshal.PtrToStructure<AnimalModel>((IntPtr) initializedData->head->next->next->data).name);
         }
 
         private unsafe DLLController.List* GetData() {
             var List = DLLController.CreateDoubleLinkedList();
-            var ParsedData = new DLLController.Data();
-                
-            var ModelData = new AnimalData().GetJsonData("./data/animals.json");
-            for(int i = 0; i < ModelData.Count; i++) {
-                ParsedData.name = ConvertStringToBytePointer(ModelData[i].name);
-                ParsedData.pathToImage = ConvertStringToBytePointer(ModelData[i].pathToImage);
-                DLLController.Push(List, ParsedData);
+            var ParsedData = new AnimalData().GetJsonData("./data/animals.json");
+            for(int i = 0; i < ParsedData.Count; i++) {
+                IntPtr ParsedObjectPtr = Marshal.AllocHGlobal(Marshal.SizeOf(ParsedData[i]));
+                Marshal.StructureToPtr(ParsedData[i], ParsedObjectPtr, false);
+
+                DLLController.Push(List, ParsedObjectPtr.ToPointer());
             }
-
             return List;
-        }
-
-        private unsafe byte* ConvertStringToBytePointer(string s) {
-            byte[] stringAsByteArr = Encoding.ASCII.GetBytes(s);
-
-            int size = Marshal.SizeOf(stringAsByteArr[0] * stringAsByteArr.Length);
-
-            IntPtr ptr = Marshal.AllocHGlobal(size);
-            Marshal.Copy(stringAsByteArr, 0, ptr, stringAsByteArr.Length);
-
-            return (byte*) ptr.ToPointer();
         }
     }
 }

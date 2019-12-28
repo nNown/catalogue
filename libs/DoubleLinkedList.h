@@ -9,13 +9,8 @@
 
 #include <stdlib.h>
 
-typedef struct ListDataFormat {
-    char* name;
-    char* pathToImage;
-} Data;
-
 typedef struct node_t {
-    Data data;
+    void* data;
     struct node_t* next;
     struct node_t* prev;
 } node;
@@ -28,14 +23,14 @@ typedef struct List {
 EXPORT DoubleLinkedList* CreateDoubleLinkedList();
 EXPORT DoubleLinkedList* Slice(DoubleLinkedList*, int);
 
-EXPORT int Push(DoubleLinkedList*, Data);
-EXPORT int Pop(DoubleLinkedList*);
+EXPORT void Push(DoubleLinkedList*, void*);
+EXPORT void Pop(DoubleLinkedList*);
 
-EXPORT int Unshift(DoubleLinkedList*, Data);
-EXPORT int Shift(DoubleLinkedList*);
+EXPORT void Unshift(DoubleLinkedList*, void*);
+EXPORT void Shift(DoubleLinkedList*);
 
-EXPORT int IndexUnshift(DoubleLinkedList*, int, Data);
-EXPORT int IndexShift(DoubleLinkedList*, int);
+EXPORT void IndexUnshift(DoubleLinkedList*, int, void*);
+EXPORT void IndexShift(DoubleLinkedList*, int);
 
 EXPORT void Foreach(DoubleLinkedList*, void(*callback)(node*, int));
 
