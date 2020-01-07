@@ -1,30 +1,28 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\nnown\\Desktop\\ProjektPP2\\ProjektPP2.csproj": {}
+    "C:\\Users\\nnown\\ProjektPP2\\ProjektPP2.csproj": {}
   },
   "projects": {
-    "C:\\Users\\nnown\\Desktop\\ProjektPP2\\ProjektPP2.csproj": {
+    "C:\\Users\\nnown\\ProjektPP2\\ProjektPP2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\nnown\\Desktop\\ProjektPP2\\ProjektPP2.csproj",
+        "projectUniqueName": "C:\\Users\\nnown\\ProjektPP2\\ProjektPP2.csproj",
         "projectName": "ProjektPP2",
-        "projectPath": "C:\\Users\\nnown\\Desktop\\ProjektPP2\\ProjektPP2.csproj",
+        "projectPath": "C:\\Users\\nnown\\ProjektPP2\\ProjektPP2.csproj",
         "packagesPath": "C:\\Users\\nnown\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\nnown\\Desktop\\ProjektPP2\\obj\\",
+        "outputPath": "C:\\Users\\nnown\\ProjektPP2\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\nnown\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\nnown\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -56,16 +54,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[3.0.1, 3.0.1]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[3.0.1, 3.0.1]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
@@ -74,7 +62,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

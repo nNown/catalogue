@@ -16,23 +16,23 @@ using System.Runtime.InteropServices;
 using Controllers.DoubleLinkedList;
 using Models.AnimalModel;
 
-namespace ProjektPP2
-{
+namespace ProjektPP2 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
-    {
+    public partial class MainWindow : Window {
         unsafe DLLController.List* initializedData;
-        public MainWindow()
-        {   
-            unsafe { initializedData = GetData(); }
+        public MainWindow() { 
+            AnimalModel currentNode;
+            
+            unsafe { 
+                initializedData = GetData(); 
+                currentNode = Marshal.PtrToStructure<AnimalModel>((IntPtr) initializedData->head->next->data);
+            }
+
+            this.DataContext = currentNode;
 
             InitializeComponent();
-        }
-
-        private unsafe void Test(object sender, RoutedEventArgs args) {
-            MessageBox.Show(Marshal.PtrToStructure<AnimalModel>((IntPtr) initializedData->head->next->next->data).name);
         }
 
         private unsafe DLLController.List* GetData() {

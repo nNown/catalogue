@@ -17,6 +17,7 @@ namespace Controllers.DoubleLinkedList {
 
         public unsafe delegate void Callback(node* el, int index);
 
+        // Always free pointer to data before deleting the node because GC doesn't do anything to native memory
         [DllImport(@"./libs/DoubleLinkedList.dll", CallingConvention = CallingConvention.Cdecl)]
         public unsafe static extern List* CreateDoubleLinkedList();
         [DllImport(@"./libs/DoubleLinkedList.dll", CallingConvention = CallingConvention.Cdecl)]

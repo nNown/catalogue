@@ -8,9 +8,18 @@
         Title="MainWindow"
         WindowState="Maximized"
         >
-    <Grid>
-        <StackPanel>
-            <Button Content="Test" Height="75" Width="100" Click="Test"/>
-        </StackPanel>
-    </Grid>
+    <StackPanel>
+        <Grid>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <TextBlock FontWeight="Bold" >
+                <Run Text="Name: "/>
+                <Run Text="{Binding name}"/>
+                <Run Text=", Latin Name: "/>
+                <Run Text="{Binding latinName}"/>
+            </TextBlock>
+</Grid></StackPanel>
 </Window>

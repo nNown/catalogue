@@ -10,7 +10,15 @@ namespace Models.AnimalModel {
     }
 
     public struct AnimalModel {
+        public int ID { get; set; }
         public string name { get; set; }
+        public string latinName { get; set; }
+        public string family { get; set; }
+        public string conservationStatus { get; set; }
+        public string conservationStatusShorthand { get; set; }
+        public string caughtBy { get; set; }
+        public string coordinates { get; set; }
+        public string comment { get; set; }
         public string pathToImage { get; set; }
     }
 }
