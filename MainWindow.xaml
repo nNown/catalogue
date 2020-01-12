@@ -5,21 +5,47 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjektPP2"
         mc:Ignorable="d"
-        Title="MainWindow"
-        WindowState="Maximized"
+        Title="Projekt PP2"
+        Width="350"
+        Height="700"
         >
     <StackPanel>
-        <Grid>
+        <Image Stretch="Fill" Source="{Binding Path=pathToImage}" Width="350" Height="275"/>
 
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
+        <TextBlock HorizontalAlignment="Center" FontSize="42" FontWeight="Regular" Text="{Binding Path=name}"/>
+        <TextBlock HorizontalAlignment="Center" FontSize="24" Foreground="#7A7A7A" FontWeight="Regular" Text="{Binding Path=latinName}"/>
+        <TextBlock HorizontalAlignment="Center" FontSize="18" Foreground="#7A7A7A" FontWeight="Regular" Text="{Binding Path=family}"/>
 
-            <TextBlock FontWeight="Bold" >
-                <Run Text="Name: "/>
-                <Run Text="{Binding name}"/>
-                <Run Text=", Latin Name: "/>
-                <Run Text="{Binding latinName}"/>
-            </TextBlock>
-</Grid></StackPanel>
+        <StackPanel Margin="0 50" HorizontalAlignment="Center">
+            <DockPanel Width="220" Margin="0 5">
+                <TextBlock FontWeight="Bold" FontSize="18" Text="Status: "/>
+                <TextBlock HorizontalAlignment="Right" FontSize="18" Text="{Binding Path=conservationStatus}"/>
+            </DockPanel>
+
+            <DockPanel Width="220" Margin="0 5">
+                <TextBlock FontWeight="Bold" FontSize="18" Text="Caught by: "/>
+                <TextBlock HorizontalAlignment="Right" FontSize="18" Text="{Binding Path=caughtBy}"/>
+            </DockPanel>
+
+            <DockPanel Width="220" Margin="0 5">
+                <TextBlock FontWeight="Bold" FontSize="18" Text="Date: "/>
+                <TextBlock HorizontalAlignment="Right" FontSize="18" Text="{Binding Path=date}"/>
+            </DockPanel>
+
+            <DockPanel Width="220" Margin="0 5">
+                <TextBlock FontWeight="Bold" FontSize="18" Text="Place: "/>
+                <TextBlock HorizontalAlignment="Right" FontSize="18" Text="{Binding Path=place}"/>
+            </DockPanel>
+        </StackPanel>
+
+        <DockPanel Width="350">
+            <Button HorizontalAlignment="Left" Margin="50 0" Name="Prev" Background="White" BorderThickness="0" Click="PrevNode" FontSize="18">
+                Prev
+            </Button>
+
+            <Button HorizontalAlignment="Right" Margin="50 0" Name="Next" Background="White" BorderThickness="0" Click="NextNode" FontSize="18">
+                Next
+            </Button>
+        </DockPanel>
+    </StackPanel>
 </Window>

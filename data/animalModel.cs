@@ -17,8 +17,8 @@ namespace Models.AnimalModel {
         public string conservationStatus { get; set; }
         public string conservationStatusShorthand { get; set; }
         public string caughtBy { get; set; }
-        public string coordinates { get; set; }
-        public string comment { get; set; }
+        public string date { get; set; }
+        public string place { get; set; }
         public string pathToImage { get; set; }
     }
 }

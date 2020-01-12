@@ -7,8 +7,32 @@
         "conservationStatus": "Least concern",
         "conservationStatusShorthand": "LC",
         "caughtBy": "John Doe",
-        "coordinates": "245, 345",
-        "comment": "None",
-        "pathToImage": "./brown-squirrel.jpg"
+        "date": "12.01.2020",
+        "place": "Poznań, WLKP, PL",
+        "pathToImage": "C:\\Users\\nnown\\ProjektPP2\\data\\brown-squirrel.jpg"
+    },
+    {
+        "ID": 2,
+        "name": "Kappa",
+        "latinName": "Sciurus niger",
+        "family": "Sciuridae",
+        "conservationStatus": "Least concern",
+        "conservationStatusShorthand": "LC",
+        "caughtBy": "John Doe",
+        "date": "12.01.2020",
+        "place": "Poznań, WLKP, PL",
+        "pathToImage": "C:\\Users\\nnown\\ProjektPP2\\data\\brown-squirrel.jpg"
+    },
+    {
+        "ID": 3,
+        "name": "Pepega",
+        "latinName": "Sciurus niger",
+        "family": "Sciuridae",
+        "conservationStatus": "Least concern",
+        "conservationStatusShorthand": "LC",
+        "caughtBy": "John Doe",
+        "date": "12.01.2020",
+        "place": "Poznań, WLKP, PL",
+        "pathToImage": "C:\\Users\\nnown\\ProjektPP2\\data\\brown-squirrel.jpg"
     }
 ]

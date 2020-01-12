@@ -22,15 +22,17 @@ namespace ProjektPP2 {
     /// </summary>
     public partial class MainWindow : Window {
         unsafe DLLController.List* initializedData;
+        unsafe DLLController.node* currentNode;
         public MainWindow() { 
-            AnimalModel currentNode;
+            AnimalModel currentModel;
             
             unsafe { 
-                initializedData = GetData(); 
-                currentNode = Marshal.PtrToStructure<AnimalModel>((IntPtr) initializedData->head->next->data);
+                initializedData = GetData();
+                currentNode = initializedData->head->next;
+                currentModel = GetModel(currentNode);
             }
 
-            this.DataContext = currentNode;
+            this.DataContext = currentModel;
 
             InitializeComponent();
         }
@@ -45,6 +47,24 @@ namespace ProjektPP2 {
                 DLLController.Push(List, ParsedObjectPtr.ToPointer());
             }
             return List;
+        }
+
+        private unsafe AnimalModel GetModel(DLLController.node* node) {
+            return Marshal.PtrToStructure<AnimalModel>((IntPtr) node->data);
+        }
+
+        private unsafe void NextNode(object sender, RoutedEventArgs args) {
+            if(currentNode->next->data != null) {
+                currentNode = currentNode->next;
+                this.DataContext = GetModel(currentNode);
+            }
+        }
+
+        private unsafe void PrevNode(object sender, RoutedEventArgs args) {
+            if(currentNode->prev->data != null) {
+                currentNode = currentNode->prev;
+                this.DataContext = GetModel(currentNode);
+            }
         }
     }
 }
