@@ -66,5 +66,41 @@ namespace ProjektPP2 {
                 this.DataContext = GetModel(currentNode);
             }
         }
+
+        private unsafe void DeleteNode(object sender, RoutedEventArgs args) {
+            // Delete first node in the list
+            if(currentNode->prev->data == null && currentNode->next->data != null) {
+                this.DataContext = GetModel(currentNode->next);
+
+                Marshal.FreeHGlobal((IntPtr) currentNode->data);
+                DLLController.Shift(initializedData);
+                currentNode = currentNode->next;
+            // Delete last node in the list
+            } else if(currentNode->next->data == null && currentNode->prev->data != null) {
+                this.DataContext = GetModel(currentNode->prev);
+
+                Marshal.FreeHGlobal((IntPtr) currentNode->data);
+                DLLController.Pop(initializedData);
+                currentNode = currentNode->prev;
+            // Delete node between first and last node
+            } else if(currentNode->next->data != null && currentNode->prev->data != null) {
+                int index = 0;
+                DLLController.node* temp = initializedData->head->next;
+                while(temp->data != currentNode->data) {
+                    temp = temp->next;
+                    index++;
+                }
+
+                this.DataContext = GetModel(currentNode->next);
+                
+                Marshal.FreeHGlobal((IntPtr) currentNode->data);
+                DLLController.IndexShift(initializedData, index);
+                currentNode = currentNode->next;
+            }
+        }
+
+        private void ChangeToAddView(object sender, RoutedEventArgs args) {
+            
+        }
     }
 }

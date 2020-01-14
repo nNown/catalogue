@@ -38,14 +38,21 @@
             </DockPanel>
         </StackPanel>
 
-        <DockPanel Width="350">
-            <Button HorizontalAlignment="Left" Margin="50 0" Name="Prev" Background="White" BorderThickness="0" Click="PrevNode" FontSize="18">
+        <Grid Width="300">
+            <Button HorizontalAlignment="Left" Name="Prev" Background="White" BorderThickness="0" Click="PrevNode" FontSize="18">
                 Prev
             </Button>
-
-            <Button HorizontalAlignment="Right" Margin="50 0" Name="Next" Background="White" BorderThickness="0" Click="NextNode" FontSize="18">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Margin="5 0" Name="Add" Background="White" BorderThickness="0" FontSize="18">
+                    Add
+                </Button>
+                <Button Margin="5 0" Name="Delete" Background="White" BorderThickness="0" Click="DeleteNode" FontSize="18">
+                    Delete
+                </Button>
+            </StackPanel>
+            <Button HorizontalAlignment="Right" Name="Next" Background="White" BorderThickness="0" Click="NextNode" FontSize="18">
                 Next
             </Button>
-        </DockPanel>
+        </Grid>
     </StackPanel>
 </Window>
