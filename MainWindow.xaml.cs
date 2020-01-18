@@ -27,7 +27,5 @@ namespace ProjektPP2 {
             App.ParentWindowRef = this;
             this.ParentFrame.Navigate(new listPage());
         }
-
-        private void ChangeToAddView(object sender, RoutedEventArgs args) {}
     }
 }

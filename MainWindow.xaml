@@ -10,7 +10,7 @@
         Height="700"
         Loaded="WindowLoaded"
         >
-    <StackPanel>
+    <Grid>
         <Frame x:Name="ParentFrame" />
-    </StackPanel>
+    </Grid>
 </Window>

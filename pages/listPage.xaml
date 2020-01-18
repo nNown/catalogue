@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ProjektPP2"
+      ShowsNavigationUI="false"
       Title="listPage">
 
     <StackPanel>
@@ -40,7 +41,7 @@
                 Prev
             </Button>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button Margin="5 0" Name="Add" Background="White" BorderThickness="0" FontSize="18">
+                <Button Margin="5 0" Name="Add" Background="White" BorderThickness="0" Click="ChangeToAddView" FontSize="18">
                     Add
                 </Button>
                 <Button Margin="5 0" Name="Delete" Background="White" BorderThickness="0" Click="DeleteNode" FontSize="18">

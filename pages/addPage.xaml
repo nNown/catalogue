@@ -4,10 +4,57 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ProjektPP2"
+      ShowsNavigationUI="false"
       Title="addPage">
-    <Grid>
-        <TextBlock>
-            Pepege
-        </TextBlock>
-    </Grid>
+    <StackPanel>
+        <DockPanel Width="350" Height="275" Background="#DDDDDD">
+            <TextBlock Text="Upload Image" FontSize="36" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock.Style>
+                    <Style TargetType="{x:Type TextBlock}">
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Foreground" Value="#7A7A7A"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
+            </TextBlock>
+        </DockPanel>
+        <DockPanel Width="350" Margin="10 10 0 10">
+            <TextBlock FontSize="18" Text="Name:" />
+            <TextBox HorizontalAlignment="Center" Width="175" Name="Name" />
+        </DockPanel>
+        <DockPanel Width="350" Margin="10 10">
+            <TextBlock FontSize="18" Text="Latin Name:" />
+            <TextBox HorizontalAlignment="Center" Width="175" Name="LatinName" />
+        </DockPanel>
+        <DockPanel Width="350" Margin="10 10">
+            <TextBlock FontSize="18" Text="Family:" />
+            <TextBox HorizontalAlignment="Center" Width="175" Name="Family" />
+        </DockPanel>
+        <DockPanel Width="350" Margin="10 10">
+            <TextBlock FontSize="18" Text="Status:" />
+            <TextBox HorizontalAlignment="Center" Width="175" Name="Status" />
+        </DockPanel>
+        <DockPanel Width="350" Margin="10 10">
+            <TextBlock FontSize="18" Text="Caught by:" />
+            <TextBox HorizontalAlignment="Center" Width="175" Name="CaughtBy" />
+        </DockPanel>
+        <DockPanel Width="350" Margin="10 10">
+            <TextBlock FontSize="18" Text="Date:" />
+            <TextBox HorizontalAlignment="Center" Width="175" Name="Date" />
+        </DockPanel>
+        <DockPanel Width="350" Margin="10 10">
+            <TextBlock FontSize="18" Text="Place:" />
+            <TextBox HorizontalAlignment="Center" Width="175" Name="Place" />
+        </DockPanel>
+        <Grid Width="300" Margin="10 25">
+            <Button HorizontalAlignment="Left" Name="Prev" Background="White" BorderThickness="0" Click="cancelAddingNode" FontSize="18">
+                Cancel
+            </Button>
+            <Button HorizontalAlignment="Right" Name="Next" Background="White" BorderThickness="0" Click="addNode" FontSize="18">
+                Add
+            </Button>
+        </Grid>
+    </StackPanel>
 </Page>
