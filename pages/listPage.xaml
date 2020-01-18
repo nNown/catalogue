@@ -1,0 +1,55 @@
+<Page x:Class="ProjektPP2.listPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ProjektPP2"
+      Title="listPage">
+
+    <StackPanel>
+        <Image Stretch="Fill" Source="{Binding Path=pathToImage}" Width="350" Height="275"/>
+
+        <TextBlock HorizontalAlignment="Center" FontSize="42" FontWeight="Regular" Text="{Binding Path=name}"/>
+        <TextBlock HorizontalAlignment="Center" FontSize="24" Foreground="#7A7A7A" FontWeight="Regular" Text="{Binding Path=latinName}"/>
+        <TextBlock HorizontalAlignment="Center" FontSize="18" Foreground="#7A7A7A" FontWeight="Regular" Text="{Binding Path=family}"/>
+
+        <StackPanel Margin="0 50" HorizontalAlignment="Center">
+            <DockPanel Width="220" Margin="0 5">
+                <TextBlock FontWeight="Bold" FontSize="18" Text="Status: "/>
+                <TextBlock HorizontalAlignment="Right" FontSize="18" Text="{Binding Path=conservationStatus}"/>
+            </DockPanel>
+
+            <DockPanel Width="220" Margin="0 5">
+                <TextBlock FontWeight="Bold" FontSize="18" Text="Caught by: "/>
+                <TextBlock HorizontalAlignment="Right" FontSize="18" Text="{Binding Path=caughtBy}"/>
+            </DockPanel>
+
+            <DockPanel Width="220" Margin="0 5">
+                <TextBlock FontWeight="Bold" FontSize="18" Text="Date: "/>
+                <TextBlock HorizontalAlignment="Right" FontSize="18" Text="{Binding Path=date}"/>
+            </DockPanel>
+
+            <DockPanel Width="220" Margin="0 5">
+                <TextBlock FontWeight="Bold" FontSize="18" Text="Place: "/>
+                <TextBlock HorizontalAlignment="Right" FontSize="18" Text="{Binding Path=place}"/>
+            </DockPanel>
+        </StackPanel>
+
+        <Grid Width="300">
+            <Button HorizontalAlignment="Left" Name="Prev" Background="White" BorderThickness="0" Click="PrevNode" FontSize="18">
+                Prev
+            </Button>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Margin="5 0" Name="Add" Background="White" BorderThickness="0" FontSize="18">
+                    Add
+                </Button>
+                <Button Margin="5 0" Name="Delete" Background="White" BorderThickness="0" Click="DeleteNode" FontSize="18">
+                    Delete
+                </Button>
+            </StackPanel>
+            <Button HorizontalAlignment="Right" Name="Next" Background="White" BorderThickness="0" Click="NextNode" FontSize="18">
+                Next
+            </Button>
+        </Grid>
+    </StackPanel>
+</Page>

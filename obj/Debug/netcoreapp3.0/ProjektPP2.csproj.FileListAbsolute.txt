@@ -36,3 +36,7 @@ C:\Users\nnown\ProjektPP2\obj\Debug\netcoreapp3.0\ProjektPP2.g.resources
 C:\Users\nnown\ProjektPP2\obj\Debug\netcoreapp3.0\ProjektPP2.AssemblyInfoInputs.cache
 C:\Users\nnown\ProjektPP2\obj\Debug\netcoreapp3.0\ProjektPP2.AssemblyInfo.cs
 C:\Users\nnown\ProjektPP2\obj\Debug\netcoreapp3.0\ProjektPP2.csproj.CopyComplete
+C:\Users\nnown\ProjektPP2\obj\Debug\netcoreapp3.0\pages\addPage.g.cs
+C:\Users\nnown\ProjektPP2\obj\Debug\netcoreapp3.0\pages\listPage.g.cs
+C:\Users\nnown\ProjektPP2\obj\Debug\netcoreapp3.0\pages\addPage.baml
+C:\Users\nnown\ProjektPP2\obj\Debug\netcoreapp3.0\pages\listPage.baml
