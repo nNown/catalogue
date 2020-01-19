@@ -8,16 +8,14 @@ using Models.AnimalModel;
 
 namespace ProjektPP2 {
     public partial class listPage : Page {
-        unsafe DLLController.node* currentNode;
-
         public listPage() {
             App.ParentWindowRef.ParentFrame.NavigationUIVisibility = NavigationUIVisibility.Hidden;
 
             AnimalModel currentModel;
                 
             unsafe { 
-                currentNode = App.data->head->next;
-                currentModel = GetModel(currentNode);
+                App.currentNode = App.data->head->next;
+                currentModel = GetModel(App.currentNode);
             }
 
             this.DataContext = currentModel;
@@ -30,47 +28,47 @@ namespace ProjektPP2 {
         }
 
         private unsafe void NextNode(object sender, RoutedEventArgs args) {
-            if(currentNode->next->data != null) {
-                currentNode = currentNode->next;
-                this.DataContext = GetModel(currentNode);
+            if(App.currentNode->next->data != null) {
+                App.currentNode = App.currentNode->next;
+                this.DataContext = GetModel(App.currentNode);
             }
         }
 
         private unsafe void PrevNode(object sender, RoutedEventArgs args) {
-            if(currentNode->prev->data != null) {
-                currentNode = currentNode->prev;
-                this.DataContext = GetModel(currentNode);
+            if(App.currentNode->prev->data != null) {
+                App.currentNode = App.currentNode->prev;
+                this.DataContext = GetModel(App.currentNode);
             }
         }
 
         private unsafe void DeleteNode(object sender, RoutedEventArgs args) {
             // Delete first node in the list
-            if(currentNode->prev->data == null && currentNode->next->data != null) {
-                this.DataContext = GetModel(currentNode->next);
+            if(App.currentNode->prev->data == null && App.currentNode->next->data != null) {
+                this.DataContext = GetModel(App.currentNode->next);
 
-                Marshal.FreeHGlobal((IntPtr) currentNode->data);
-                currentNode = currentNode->next;
+                Marshal.FreeHGlobal((IntPtr) App.currentNode->data);
+                App.currentNode = App.currentNode->next;
                 DLLController.Shift(App.data);
             // Delete last node in the list
-            } else if(currentNode->next->data == null && currentNode->prev->data != null) {
-                this.DataContext = GetModel(currentNode->prev);
+            } else if(App.currentNode->next->data == null && App.currentNode->prev->data != null) {
+                this.DataContext = GetModel(App.currentNode->prev);
 
-                Marshal.FreeHGlobal((IntPtr) currentNode->data);
-                currentNode = currentNode->prev;
+                Marshal.FreeHGlobal((IntPtr) App.currentNode->data);
+                App.currentNode = App.currentNode->prev;
                 DLLController.Pop(App.data);
             // Delete node between first and last node
-            } else if(currentNode->next->data != null && currentNode->prev->data != null) {
+            } else if(App.currentNode->next->data != null && App.currentNode->prev->data != null) {
                 int index = 0;
                 DLLController.node* temp = App.data->head->next;
-                while(temp->data != currentNode->data) {
+                while(temp->data != App.currentNode->data) {
                     temp = temp->next;
                     index++;
                 }
 
-                this.DataContext = GetModel(currentNode->next);
+                this.DataContext = GetModel(App.currentNode->next);
                 
-                Marshal.FreeHGlobal((IntPtr) currentNode->data);
-                currentNode = currentNode->next;
+                Marshal.FreeHGlobal((IntPtr) App.currentNode->data);
+                App.currentNode = App.currentNode->next;
                 DLLController.IndexShift(App.data, index);
             }
         }

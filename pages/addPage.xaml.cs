@@ -11,6 +11,7 @@ namespace ProjektPP2 {
         private string pathToImg;
         public addPage() {
             App.ParentWindowRef.ParentFrame.NavigationUIVisibility = NavigationUIVisibility.Hidden;
+            this.DataContext = this;
             InitializeComponent();
         }
 
@@ -37,7 +38,17 @@ namespace ProjektPP2 {
             IntPtr ParsedData = Marshal.AllocHGlobal(Marshal.SizeOf(data));
             Marshal.StructureToPtr(data, ParsedData, false);
 
-            DLLController.Push(App.data, ParsedData.ToPointer());
+            int index = 0;
+            DLLController.node* temp = App.data->head->next;
+
+            while(temp->data != App.currentNode->data) {
+                temp = temp->next;
+                index++;
+            }
+
+            if(temp->next->data == null) DLLController.Push(App.data, ParsedData.ToPointer());
+            else DLLController.IndexUnshift(App.data, index, ParsedData.ToPointer());
+
             App.ParentWindowRef.ParentFrame.Navigate(new listPage());
         }
 

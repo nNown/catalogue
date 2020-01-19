@@ -7,7 +7,7 @@
       ShowsNavigationUI="false"
       Title="addPage">
     <StackPanel>
-        <DockPanel Width="350" Height="275" Background="#DDDDDD">
+        <DockPanel Width="350" Height="275" Background="#DDDDDD" Visibility="Visible">
             <Button FontSize="28" HorizontalAlignment="Center" Click="uploadImage" VerticalAlignment="Center" BorderThickness="0">
                 Upload Image
             </Button>

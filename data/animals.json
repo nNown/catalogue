@@ -1,38 +1,14 @@
 [
     {
         "ID": 1,
-        "name": "Fox Squirrel",
-        "latinName": "Sciurus niger",
-        "family": "Sciuridae",
+        "name": "Mniszek Lekarski",
+        "latinName": "Taraxacum officinale F.H. Wigg.",
+        "family": "Taraxacum F.H. Wigg.",
         "conservationStatus": "Least concern",
         "conservationStatusShorthand": "LC",
-        "caughtBy": "John Doe",
+        "caughtBy": "Jan Kowalski",
         "date": "12.01.2020",
         "place": "Poznań, WLKP, PL",
-        "pathToImage": "C:\\Users\\nnown\\ProjektPP2\\data\\brown-squirrel.jpg"
-    },
-    {
-        "ID": 2,
-        "name": "123",
-        "latinName": "Sciurus niger",
-        "family": "Sciuridae",
-        "conservationStatus": "Least concern",
-        "conservationStatusShorthand": "LC",
-        "caughtBy": "John Doe",
-        "date": "12.01.2020",
-        "place": "Poznań, WLKP, PL",
-        "pathToImage": "C:\\Users\\nnown\\ProjektPP2\\data\\brown-squirrel.jpg"
-    },
-    {
-        "ID": 3,
-        "name": "test",
-        "latinName": "Sciurus niger",
-        "family": "Sciuridae",
-        "conservationStatus": "Least concern",
-        "conservationStatusShorthand": "LC",
-        "caughtBy": "John Doe",
-        "date": "12.01.2020",
-        "place": "Poznań, WLKP, PL",
-        "pathToImage": "C:\\Users\\nnown\\ProjektPP2\\data\\brown-squirrel.jpg"
+        "pathToImage": "data\\mniszek-lekarski.jpg"
     }
 ]

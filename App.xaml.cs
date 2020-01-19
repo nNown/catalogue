@@ -15,6 +15,7 @@ namespace ProjektPP2 {
     /// </summary>
     public partial class App : Application {
         public static unsafe DLLController.List* data;
+        public static unsafe DLLController.node* currentNode;
         public static MainWindow ParentWindowRef;
         private unsafe void AppStartup(object sender, StartupEventArgs args) {
             data = GetData();
