@@ -8,17 +8,9 @@
       Title="addPage">
     <StackPanel>
         <DockPanel Width="350" Height="275" Background="#DDDDDD">
-            <TextBlock Text="Upload Image" FontSize="36" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <TextBlock.Style>
-                    <Style TargetType="{x:Type TextBlock}">
-                        <Style.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Foreground" Value="#7A7A7A"/>
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </TextBlock.Style>
-            </TextBlock>
+            <Button FontSize="28" HorizontalAlignment="Center" Click="uploadImage" VerticalAlignment="Center" BorderThickness="0">
+                Upload Image
+            </Button>
         </DockPanel>
         <DockPanel Width="350" Margin="10 10 0 10">
             <TextBlock FontSize="18" Text="Name:" />
@@ -34,7 +26,15 @@
         </DockPanel>
         <DockPanel Width="350" Margin="10 10">
             <TextBlock FontSize="18" Text="Status:" />
-            <TextBox HorizontalAlignment="Center" Width="175" Name="Status" />
+            <ComboBox HorizontalAlignment="Center" Width="175" Name="Status">
+                <ComboBoxItem IsSelected="True">Least Concern</ComboBoxItem>
+                <ComboBoxItem >Near Threatened</ComboBoxItem>
+                <ComboBoxItem >Vulnerable</ComboBoxItem>
+                <ComboBoxItem >Endangered</ComboBoxItem>
+                <ComboBoxItem >Critically Endangered</ComboBoxItem>
+                <ComboBoxItem >Extinct in the Wild</ComboBoxItem>
+                <ComboBoxItem >Extinct</ComboBoxItem>
+            </ComboBox>
         </DockPanel>
         <DockPanel Width="350" Margin="10 10">
             <TextBlock FontSize="18" Text="Caught by:" />
@@ -42,7 +42,7 @@
         </DockPanel>
         <DockPanel Width="350" Margin="10 10">
             <TextBlock FontSize="18" Text="Date:" />
-            <TextBox HorizontalAlignment="Center" Width="175" Name="Date" />
+            <DatePicker HorizontalAlignment="Center" Width="175" Name="Date" />
         </DockPanel>
         <DockPanel Width="350" Margin="10 10">
             <TextBlock FontSize="18" Text="Place:" />
