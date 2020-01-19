@@ -14,19 +14,19 @@
         </DockPanel>
         <DockPanel Width="350" Margin="10 10 0 10">
             <TextBlock FontSize="18" Text="Name:" />
-            <TextBox HorizontalAlignment="Center" Width="175" Name="Name" />
+            <TextBox HorizontalAlignment="Center" Width="175" x:Name="Name" />
         </DockPanel>
         <DockPanel Width="350" Margin="10 10">
             <TextBlock FontSize="18" Text="Latin Name:" />
-            <TextBox HorizontalAlignment="Center" Width="175" Name="LatinName" />
+            <TextBox HorizontalAlignment="Center" Width="175" x:Name="LatinName" />
         </DockPanel>
         <DockPanel Width="350" Margin="10 10">
             <TextBlock FontSize="18" Text="Family:" />
-            <TextBox HorizontalAlignment="Center" Width="175" Name="Family" />
+            <TextBox HorizontalAlignment="Center" Width="175" x:Name="Family" />
         </DockPanel>
         <DockPanel Width="350" Margin="10 10">
             <TextBlock FontSize="18" Text="Status:" />
-            <ComboBox HorizontalAlignment="Center" Width="175" Name="Status">
+            <ComboBox HorizontalAlignment="Center" Width="175" x:Name="Status">
                 <ComboBoxItem IsSelected="True">Least Concern</ComboBoxItem>
                 <ComboBoxItem >Near Threatened</ComboBoxItem>
                 <ComboBoxItem >Vulnerable</ComboBoxItem>
@@ -38,21 +38,21 @@
         </DockPanel>
         <DockPanel Width="350" Margin="10 10">
             <TextBlock FontSize="18" Text="Caught by:" />
-            <TextBox HorizontalAlignment="Center" Width="175" Name="CaughtBy" />
+            <TextBox HorizontalAlignment="Center" Width="175" x:Name="CaughtBy" />
         </DockPanel>
         <DockPanel Width="350" Margin="10 10">
             <TextBlock FontSize="18" Text="Date:" />
-            <DatePicker HorizontalAlignment="Center" Width="175" Name="Date" />
+            <DatePicker HorizontalAlignment="Center" Width="175" x:Name="Date" />
         </DockPanel>
         <DockPanel Width="350" Margin="10 10">
             <TextBlock FontSize="18" Text="Place:" />
-            <TextBox HorizontalAlignment="Center" Width="175" Name="Place" />
+            <TextBox HorizontalAlignment="Center" Width="175" x:Name="Place" />
         </DockPanel>
         <Grid Width="300" Margin="10 25">
-            <Button HorizontalAlignment="Left" Name="Prev" Background="White" BorderThickness="0" Click="cancelAddingNode" FontSize="18">
+            <Button HorizontalAlignment="Left" x:Name="Prev" Background="White" BorderThickness="0" Click="cancelAddingNode" FontSize="18">
                 Cancel
             </Button>
-            <Button HorizontalAlignment="Right" Name="Next" Background="White" BorderThickness="0" Click="addNode" FontSize="18">
+            <Button HorizontalAlignment="Right" x:Name="Next" Background="White" BorderThickness="0" Click="addNode" FontSize="18">
                 Add
             </Button>
         </Grid>

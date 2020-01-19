@@ -37,18 +37,18 @@
         </StackPanel>
 
         <Grid Width="300">
-            <Button HorizontalAlignment="Left" Name="Prev" Background="White" BorderThickness="0" Click="PrevNode" FontSize="18">
+            <Button HorizontalAlignment="Left" x:Name="Prev" Background="White" BorderThickness="0" Click="PrevNode" FontSize="18">
                 Prev
             </Button>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button Margin="5 0" Name="Add" Background="White" BorderThickness="0" Click="ChangeToAddView" FontSize="18">
+                <Button Margin="5 0" x:Name="Add" Background="White" BorderThickness="0" Click="ChangeToAddView" FontSize="18">
                     Add
                 </Button>
-                <Button Margin="5 0" Name="Delete" Background="White" BorderThickness="0" Click="DeleteNode" FontSize="18">
+                <Button Margin="5 0" x:Name="Delete" Background="White" BorderThickness="0" Click="DeleteNode" FontSize="18">
                     Delete
                 </Button>
             </StackPanel>
-            <Button HorizontalAlignment="Right" Name="Next" Background="White" BorderThickness="0" Click="NextNode" FontSize="18">
+            <Button HorizontalAlignment="Right" x:Name="Next" Background="White" BorderThickness="0" Click="NextNode" FontSize="18">
                 Next
             </Button>
         </Grid>
