@@ -15,23 +15,23 @@
         <TextBlock HorizontalAlignment="Center" FontSize="18" Foreground="#7A7A7A" FontWeight="Regular" Text="{Binding Path=family}"/>
 
         <StackPanel Margin="0 50" HorizontalAlignment="Center">
-            <DockPanel Width="220" Margin="0 5">
+            <DockPanel Width="250" Margin="0 5">
                 <TextBlock FontWeight="Bold" FontSize="18" Text="Status: "/>
                 <TextBlock HorizontalAlignment="Right" FontSize="18" Text="{Binding Path=conservationStatus}"/>
             </DockPanel>
 
-            <DockPanel Width="220" Margin="0 5">
-                <TextBlock FontWeight="Bold" FontSize="18" Text="Caught by: "/>
+            <DockPanel Width="250" Margin="0 5">
+                <TextBlock FontWeight="Bold" FontSize="18" Text="Zebrana przez: "/>
                 <TextBlock HorizontalAlignment="Right" FontSize="18" Text="{Binding Path=caughtBy}"/>
             </DockPanel>
 
-            <DockPanel Width="220" Margin="0 5">
-                <TextBlock FontWeight="Bold" FontSize="18" Text="Date: "/>
+            <DockPanel Width="250" Margin="0 5">
+                <TextBlock FontWeight="Bold" FontSize="18" Text="Data: "/>
                 <TextBlock HorizontalAlignment="Right" FontSize="18" Text="{Binding Path=date}"/>
             </DockPanel>
 
-            <DockPanel Width="220" Margin="0 5">
-                <TextBlock FontWeight="Bold" FontSize="18" Text="Place: "/>
+            <DockPanel Width="250" Margin="0 5">
+                <TextBlock FontWeight="Bold" FontSize="18" Text="Miejsce: "/>
                 <TextBlock HorizontalAlignment="Right" FontSize="18" Text="{Binding Path=place}"/>
             </DockPanel>
         </StackPanel>

@@ -24,7 +24,7 @@ namespace ProjektPP2 {
 
             Random _random = new Random();
             data.ID = _random.Next();
-
+            
             data.name = Name.Text;
             data.latinName = LatinName.Text;
             data.family = Family.Text;
