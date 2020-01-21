@@ -1,10 +1,12 @@
 using System;
+using System.IO;
 using System.Windows;
 using System.Windows.Navigation;
 using System.Windows.Controls;
 using System.Runtime.InteropServices;
 using Controllers.DoubleLinkedList;
 using Models.AnimalModel;
+using Newtonsoft.Json;
 
 namespace ProjektPP2 {
     public partial class addPage : Page {
@@ -46,8 +48,11 @@ namespace ProjektPP2 {
                 index++;
             }
 
-            if(temp->next->data == null) DLLController.Push(App.data, ParsedData.ToPointer());
-            else DLLController.IndexUnshift(App.data, index, ParsedData.ToPointer());
+            DLLController.Push(App.data, ParsedData.ToPointer());
+
+            var AddedData = new AnimalData().GetJsonData("./data/animals.json");
+            AddedData.Add(data);
+            File.WriteAllText("./data/animals.json", JsonConvert.SerializeObject(AddedData));
 
             App.ParentWindowRef.ParentFrame.Navigate(new listPage());
         }

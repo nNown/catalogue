@@ -1,5 +1,4 @@
 ﻿using System.Windows;
-//dotnet run
 
 namespace ProjektPP2 {
     /// <summary>

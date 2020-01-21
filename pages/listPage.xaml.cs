@@ -1,10 +1,12 @@
 using System;
+using System.IO;
 using System.Windows;
 using System.Windows.Navigation;
 using System.Windows.Controls;
 using System.Runtime.InteropServices;
 using Controllers.DoubleLinkedList;
 using Models.AnimalModel;
+using Newtonsoft.Json;
 
 namespace ProjektPP2 {
     public partial class listPage : Page {
@@ -46,12 +48,20 @@ namespace ProjektPP2 {
             if(App.currentNode->prev->data == null && App.currentNode->next->data != null) {
                 this.DataContext = GetModel(App.currentNode->next);
 
+                var ParsedData = new AnimalData().GetJsonData("./data/animals.json");
+                ParsedData.Remove(Marshal.PtrToStructure<AnimalModel>((IntPtr) App.currentNode->data));
+                File.WriteAllText("./data/animals.json", JsonConvert.SerializeObject(ParsedData));
+
                 Marshal.FreeHGlobal((IntPtr) App.currentNode->data);
                 App.currentNode = App.currentNode->next;
                 DLLController.Shift(App.data);
             // Delete last node in the list
             } else if(App.currentNode->next->data == null && App.currentNode->prev->data != null) {
                 this.DataContext = GetModel(App.currentNode->prev);
+
+                var ParsedData = new AnimalData().GetJsonData("./data/animals.json");
+                ParsedData.Remove(Marshal.PtrToStructure<AnimalModel>((IntPtr) App.currentNode->data));
+                File.WriteAllText("./data/animals.json", JsonConvert.SerializeObject(ParsedData));
 
                 Marshal.FreeHGlobal((IntPtr) App.currentNode->data);
                 App.currentNode = App.currentNode->prev;
@@ -66,6 +76,10 @@ namespace ProjektPP2 {
                 }
 
                 this.DataContext = GetModel(App.currentNode->next);
+
+                var ParsedData = new AnimalData().GetJsonData("./data/animals.json");
+                ParsedData.Remove(Marshal.PtrToStructure<AnimalModel>((IntPtr) App.currentNode->data));
+                File.WriteAllText("./data/animals.json", JsonConvert.SerializeObject(ParsedData));
                 
                 Marshal.FreeHGlobal((IntPtr) App.currentNode->data);
                 App.currentNode = App.currentNode->next;
